@@ -1,0 +1,22 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "kr.onerm.twa",
+      "sha256_cert_fingerprints": [
+        "B5:38:3D:46:D2:C9:7C:87:EA:C8:99:04:DD:94:D8:10:57:11:3D:B7:3E:9C:DC:31:3E:CD:57:7A:E7:E3:54:AE"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "kr.onerm.twa",
+      "sha256_cert_fingerprints": [
+        "4A:A5:EF:32:61:CD:AA:7D:68:40:93:08:03:BD:02:8F:8A:45:F6:C9:64:C3:C9:D0:EA:21:A0:F5:5E:0E:0E:E7"
+      ]
+    }
+  }
+]

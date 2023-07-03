@@ -1,0 +1,124 @@
+// app global css in SCSS form
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+@import url("//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css");
+body,html {
+  font-family: "Spoqa Han Sans Neo", "Pretendard", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  margin: auto;
+  max-width: 599px;
+  height: 100%;
+}
+
+
+.q-header,
+.q-layout,
+.q-footer{
+  margin: auto;
+  max-width: 599px;
+}
+
+
+.q-body--prevent-scroll {
+  position: inherit !important;
+}
+
+
+div,
+label,
+i {
+  box-sizing: border-box;
+
+}
+
+// div::-webkit-scrollbar {
+//   display: none;
+// }
+
+input {
+  font-size: 16px;
+  font-family: inherit;
+  text-align: center;
+  font-weight: bolder;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+.q-page, .q-page-container, .q-layout {
+  min-height: 0px !important;
+  height: 100%;
+}
+
+.q-toolbar {
+  padding: 0;
+}
+
+#q-app {
+  position: relative;
+  top: 50px;
+  height: calc(100% - 50px);
+  max-width: 599px;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.target {
+  background: white;
+  body.body--dark & {
+    background: $dark-page;
+  }
+}
+
+.item_target {
+  background: white;
+  body.body--dark & {
+    background: $dark;
+  }
+}
+
+.item2_target {
+  background: white;
+  body.body--dark & {
+    background: rgba($color: white, $alpha: 0.76);
+  }
+}
+
+.input_target {
+  background: #eee;
+  body.body--dark & {
+    background: $dark;
+  }
+}
+
+.text_target {
+  color: black;
+  body.body--dark & {
+    color: rgba($color: white, $alpha: 0.76);
+  }
+}
+
+.border_bottom_target {
+  border-bottom: 1px solid rgba($color: black, $alpha: 0.24);
+  body.body--dark & {
+    border-bottom: 1px solid rgba($color: white, $alpha: 0.76);
+  }
+}
+.border_top_target {
+  border-top: 1px solid rgba($color: black, $alpha: 0.24);
+  body.body--dark & {
+    border-top: 1px solid rgba($color: white, $alpha: 0.76);
+  }
+}
+
+.border_target {
+  border: 1px solid #eee;
+  body.body--dark & {
+    border: 1px solid rgba($color: white, $alpha: 0.76);
+  }
+}
