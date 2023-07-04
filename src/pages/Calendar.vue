@@ -3,9 +3,9 @@
         <div class="calendar_container">
             <div class="row items-center q-pa-lg text-bold">
                 <q-space />
-                <q-btn @click="onClickPrev(currentMonth)" flat round dense label="<" size="lg"></q-btn>
+                <q-btn @click="onClickPrev()" flat round dense label="<" size="lg"></q-btn>
                 <text-h1 style="font-size: 24px;">{{ clickedYear }}년 {{ clickedMonth }}월</text-h1>
-                <q-btn @click="onClickNext(currentMonth)" flat round dense label=">" size="lg"></q-btn>
+                <q-btn @click="onClickNext()" flat round dense label=">" size="lg"></q-btn>
                 <q-space />
             </div>
             <Flicking @changed="e => nextMonth(e)" ref="cal_flicking" :options="{
@@ -65,17 +65,28 @@
                     <q-card-section class="row items-center q-pb-none">
                         <q-btn icon="close" flat round dense v-close-popup />
                         <q-space />
-                        <q-btn @click="onClickPrev(currentMonth)" flat round dense label="<" size="lg"></q-btn>
+                        <q-btn @click="onClickPrevRecord(currentMonth)" flat round dense label="<" size="lg"></q-btn>
                         <div class="text-h6">{{ clickedYear }}년 {{ clickedMonth }}월 {{ clickedDay }}일</div>
                         <q-btn @click="onClickNextRecord(currentMonth)" flat round dense label=">" size="lg"></q-btn>
                         <q-space />
                         <q-btn @click="shot()" flat round dense :icon="outlinedShare" />
                     </q-card-section>
                     <q-card-section>
-                        <div v-for="(row, index) in records" :key="index" class="q-pa-md">
-                            <div v-if="row.day === clickedDay">
-                                <q-table hide-bottom row-key="name" :title="row.type" :rows="row.record" :columns="columns">
-                                </q-table>
+                        <div v-for="(row, index) in calendar_data" :key="index" class="q-pa-md">
+                            <div v-if="row.year == clickedYear && row.month == clickedMonth">
+                                <div v-for="(record, index2) in row.records" :key="index2">
+                                    <div v-if="record.day == clickedDay">
+                                        <div v-for="(data, index3) in record.data.record" :key="index3">
+                                            <div>
+                                                kg : {{ data.kg }}
+                                                rep : {{ data.rep }}
+                                                휴식 : {{ data.break_time }}
+                                                수행 : {{ data.performance_time }}
+                                                title : {{ record.data.title }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </q-card-section>
@@ -90,6 +101,7 @@ import { outlinedShare } from '@quasar/extras/material-icons-outlined'
 import { ref } from 'vue'
 import html2canvas from 'html2canvas';
 import { Platform } from 'quasar';
+import { date } from 'quasar';
 export default {
     name: 'app_calendar',
     setup() {
@@ -112,7 +124,6 @@ export default {
             currentMonthStartWeekIndex: null,
             currentCalendarMatrix: [],
             endOfDay: null,
-            list: [0, 1, 2, 3, 4],
             calendar_data: [
                 {
                     year: new Date().getFullYear(),
@@ -120,6 +131,7 @@ export default {
                     StartWeekIndex: null,
                     EndOfDay: null,
                     CalendarMatrix: [],
+                    records: []
                 },
                 {
                     year: new Date().getFullYear(),
@@ -127,6 +139,7 @@ export default {
                     StartWeekIndex: null,
                     EndOfDay: null,
                     CalendarMatrix: [],
+                    records: []
                 },
                 {
                     year: new Date().getFullYear(),
@@ -134,106 +147,8 @@ export default {
                     StartWeekIndex: null,
                     EndOfDay: null,
                     CalendarMatrix: [],
+                    records: []
                 }
-            ],
-            columns: [
-                {
-                    name: 'set',
-                    label: 'set',
-                    align: 'center',
-                    field: row => row.set_id,
-                },
-                {
-                    name: 'kg',
-                    label: 'kg',
-                    align: 'center',
-                    field: 'kg'
-                },
-                {
-                    name: 'rep',
-                    label: 'rep',
-                    align: 'center',
-                    field: 'rep'
-                },
-                {
-                    name: 'break_time',
-                    label: 'break_time',
-                    align: 'center',
-                    field: 'break_time'
-                },
-                {
-                    name: 'performance_time',
-                    label: 'performance_time',
-                    align: 'center',
-                    field: 'performance_time'
-                }
-            ],
-            records: [{
-                year: 2023,
-                month: 5,
-                day: 4,
-                type: "케이블 랫 풀 다운",
-                record: [
-                    {
-                        set_id: 1,
-                        kg: 5,
-                        rep: 9,
-                        break_time: 63, // 초단위
-                        performance_time: 326
-                    },
-                    {
-                        set_id: 2,
-                        kg: 4,
-                        rep: 12,
-                        break_time: 37,
-                        performance_time: 327
-                    }
-                ]
-            },
-            {
-                year: 2023,
-                month: 6,
-                day: 1,
-                type: "풀업",
-                record: [
-                    {
-                        set_id: 1,
-                        kg: 7,
-                        rep: 1,
-                        break_time: 32, // 초단위
-                        performance_time: 326
-                    },
-                    {
-                        set_id: 2,
-                        kg: 4,
-                        rep: 3,
-                        break_time: 64,
-                        performance_time: 538
-                    }
-                ]
-            },
-            {
-                year: 2023,
-                month: 6,
-                day: 9,
-                type: "핀 로드 랫 풀 다운",
-                record: [
-                    {
-                        set_id: 1,
-                        kg: 5,
-                        rep: 2,
-                        break_time: 65, // 초단위
-                        performance_time: 567
-                    },
-                    {
-                        set_id: 2,
-                        kg: 4,
-                        rep: 17,
-                        break_time: 31,
-                        performance_time: 123
-                    }
-                ]
-            }
             ]
         }
     },
@@ -267,6 +182,18 @@ export default {
                 this.calendar_data[i].StartWeekIndex = this.getStartWeek(this.calendar_data[i].year, this.calendar_data[i].month);
                 this.calendar_data[i].EndOfDay = this.getEndOfDay(this.calendar_data[i].year, this.calendar_data[i].month);
                 this.calendar_data[i].CalendarMatrix = this.initCalendar(this.calendar_data[i].StartWeekIndex, this.calendar_data[i].EndOfDay);
+                for (var record of this.$store.state.calendar.record) {
+                    var record_year = date.formatDate(record.date, 'YYYY');
+                    var record_month = date.formatDate(record.date, 'M');
+                    var record_day = date.formatDate(record.date, 'D');
+                    if (record_month == this.calendar_data[i].month && record_year == this.calendar_data[i].year) {
+                        var temp = {
+                            day: record_day,
+                            data: record
+                        }
+                        this.calendar_data[i].records.push(temp);
+                    }
+                }
             }
             console.log(this.$refs.cal_flicking.index)
         },
@@ -292,8 +219,11 @@ export default {
             return currentCalendarMatrix;
         },
         record_exist: function (day, month, year) { // 해당 일자에 기록이 있는지 확인
-            for (var record of this.records) {
-                if (record.day === day && record.month === month && record.year === year) {
+            for (var record of this.$store.state.calendar.record) {
+                var record_year = date.formatDate(record.date, 'YYYY');
+                var record_month = date.formatDate(record.date, 'M');
+                var record_day = date.formatDate(record.date, 'D');
+                if (record_day == day && record_month == month && record_year == year) {
                     return true;
                 }
             }
@@ -379,30 +309,11 @@ export default {
                 this.makeMonth(e);
             }
         },
-        onClickPrev: function (month) {
+        onClickPrev: function () {
             this.$refs.cal_flicking.prev()
-            /*month--;
-            if (month <= 0) {
-                this.currentMonth = 12;
-                this.currentYear -= 1;
-            }
-            else {
-                this.currentMonth -= 1;
-            }
-            this.init();*/
         },
-        onClickNext: function (month) {
+        onClickNext: function () {
             this.$refs.cal_flicking.next()
-            /*
-            month++;
-            if (month > 12) {
-                this.currentMonth = 1;
-                this.currentYear += 1;
-            }
-            else {
-                this.currentMonth += 1;
-            }
-            this.init();*/
         },
         makeMonth: function (e) {
             console.log('make');
@@ -412,6 +323,7 @@ export default {
                 StartWeekIndex: null,
                 EndOfDay: null,
                 CalendarMatrix: [],
+                records: []
             }
             if (e.direction === 'PREV') {
                 let target = this.calendar_data.at(0)
@@ -444,14 +356,6 @@ export default {
                 this.calendar_data.push(obj);
             }
             console.log(this.calendar_data);
-        },
-        testr: function () {
-            this.list.splice(0, 0, ...[this.list[0]-1]);
-            console.log(this.list)
-        },
-        test: function () {
-            this.list.push(this.list[this.list.length - 1] + 1);
-            console.log(this.$refs.test_flicking.index)
         }
     }
 };
