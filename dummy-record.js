@@ -10,7 +10,7 @@ const record = [
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
     title: "레그 익스텐션",
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
   },
   {
     _id: "649b72c6f07badde0f32efb1",
@@ -23,7 +23,7 @@ const record = [
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
     title: "바벨 데드리프트",
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
   },
   {
     _id: "64522bdbcc7614d26c5b806a",
@@ -35,7 +35,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "힙 어브덕션",
   },
   {
@@ -48,7 +48,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "힙 어브덕션",
   },
   {
@@ -61,7 +61,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "힙 어브덕션",
   },
   {
@@ -74,7 +74,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "힙 어브덕션",
   },
   {
@@ -87,7 +87,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "힙 어브덕션",
   },
   {
@@ -100,7 +100,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "힙 어브덕션",
   },
   {
@@ -113,7 +113,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "힙 어브덕션",
   },
   {
@@ -126,7 +126,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "힙 어브덕션",
   },
   {
@@ -139,7 +139,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "시티드 레그 컬",
   },
   {
@@ -152,7 +152,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "시티드 레그 컬",
   },
   {
@@ -165,7 +165,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "시티드 레그 컬",
   },
   {
@@ -178,7 +178,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "시티드 레그 컬",
   },
   {
@@ -191,7 +191,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "시티드 레그 컬",
   },
   {
@@ -204,7 +204,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "풀 업",
   },
   {
@@ -217,7 +217,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "풀 업",
   },
   {
@@ -230,7 +230,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "풀 업",
   },
   {
@@ -243,7 +243,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "풀 업",
   },
   {
@@ -256,7 +256,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "풀 업",
   },
   {
@@ -269,7 +269,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "핀 로드 랫 풀 다운",
   },
   {
@@ -282,7 +282,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "핀 로드 랫 풀 다운",
   },
   {
@@ -295,7 +295,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "핀 로드 랫 풀 다운",
   },
   {
@@ -308,7 +308,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "핀 로드 랫 풀 다운",
   },
   {
@@ -321,7 +321,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "핀 로드 랫 풀 다운",
   },
   {
@@ -334,7 +334,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "핀 로드 랫 풀 다운",
   },
   {
@@ -347,7 +347,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "핀 로드 랫 풀 다운",
   },
   {
@@ -360,7 +360,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "핀 로드 랫 풀 다운",
   },
   {
@@ -373,7 +373,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "케이블 원 암 시티드 로우",
   },
   {
@@ -386,7 +386,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "케이블 원 암 시티드 로우",
   },
   {
@@ -399,7 +399,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3, 13).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2, 13).valueOf(),
     title: "케이블 원 암 시티드 로우",
   },
   {
@@ -412,7 +412,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "케이블 원 암 시티드 로우",
   },
   {
@@ -425,7 +425,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "케이블 원 암 시티드 로우",
   },
   {
@@ -438,7 +438,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "케이블 원 암 시티드 로우",
   },
   {
@@ -451,7 +451,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "핀 로드 리버스 팩 덱 플라이",
   },
   {
@@ -464,7 +464,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "핀 로드 리버스 팩 덱 플라이",
   },
   {
@@ -477,7 +477,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "핀 로드 리버스 팩 덱 플라이",
   },
   {
@@ -490,7 +490,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "핀 로드 리버스 팩 덱 플라이",
   },
   {
@@ -503,7 +503,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "핀 로드 리버스 팩 덱 플라이",
   },
   {
@@ -516,7 +516,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "핀 로드 리버스 팩 덱 플라이",
   },
   {
@@ -529,7 +529,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "핀 로드 리버스 팩 덱 플라이",
   },
   {
@@ -542,7 +542,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "바벨 스쿼트",
   },
   {
@@ -555,7 +555,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "바벨 스쿼트",
   },
   {
@@ -568,7 +568,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "바벨 스쿼트",
   },
   {
@@ -581,7 +581,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "바벨 스쿼트",
   },
   {
@@ -594,7 +594,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "바벨 스쿼트",
   },
   {
@@ -607,7 +607,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "바벨 스쿼트",
   },
   {
@@ -620,7 +620,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "바벨 스쿼트",
   },
   {
@@ -633,7 +633,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "바벨 스쿼트",
   },
   {
@@ -646,7 +646,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "힙 어덕션",
   },
   {
@@ -659,7 +659,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "힙 어덕션",
   },
   {
@@ -672,7 +672,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "힙 어덕션",
   },
   {
@@ -685,7 +685,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "힙 어덕션",
   },
   {
@@ -698,7 +698,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "힙 어덕션",
   },
   {
@@ -711,7 +711,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "힙 어덕션",
   },
   {
@@ -724,7 +724,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "힙 어덕션",
   },
   {
@@ -737,7 +737,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "힙 어덕션",
   },
   {
@@ -750,7 +750,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "레그 익스텐션",
   },
   {
@@ -763,7 +763,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "레그 익스텐션",
   },
   {
@@ -776,7 +776,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "레그 익스텐션",
   },
   {
@@ -789,7 +789,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "레그 익스텐션",
   },
   {
@@ -802,7 +802,7 @@ const record = [
       { kg: 40, rep: 10, break_time: 90, performance_time: 73, check: true },
       { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
     ],
-    date: new Date(2023, new Date().getMonth() - 3,23).valueOf(),
+    date: new Date(2023, new Date().getMonth() - 2,23).valueOf(),
     title: "레그 익스텐션",
   },
 ];

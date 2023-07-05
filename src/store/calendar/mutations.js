@@ -4,6 +4,5 @@ export const setData = (state, payload) => {
 }
 
 export const getCalendar = (state, payload) =>{
-  state.record.push()
+  state.record.unshift(...payload)
 }
-

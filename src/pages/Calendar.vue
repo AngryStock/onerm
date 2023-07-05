@@ -237,7 +237,7 @@ export default {
         },
         openRecord: function (day, month, year) {
             if (this.record_exist(day, month, year)) {
-                this.icon = true
+                this.icon = true;
                 this.clickedDay = day;
             }
         },
@@ -339,6 +339,19 @@ export default {
                 obj.EndOfDay = this.getEndOfDay(obj.year, obj.month);
                 obj.CalendarMatrix = this.initCalendar(obj.StartWeekIndex, obj.EndOfDay);
                 this.calendar_data.splice(0, 0, ...[obj])
+                this.$store.dispatch('calendar/getCalendar');
+                for (var record of this.$store.state.calendar.record) {
+                    var record_year = date.formatDate(record.date, 'YYYY');
+                    var record_month = date.formatDate(record.date, 'M');
+                    var record_day = date.formatDate(record.date, 'D');
+                    if (record_month == obj.month && record_year == obj.year) {
+                        var temp = {
+                            day: record_day,
+                            data: record
+                        }
+                        obj.records.push(temp);
+                    }
+                }
             }
             else if (e.direction === 'NEXT') {
                 let target = this.calendar_data.at(-1)
@@ -366,7 +379,7 @@ a {
 }
 
 .calendar_container {
-    height: calc(100%-110px);
+    height: calc(100% - 110px);
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -387,7 +400,7 @@ a {
     display: none;
 }
 .calendar_table {
-    height: calc(100%-74px);
+    height: calc(100% - 74px);
     margin: auto;
 }
 
