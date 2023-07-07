@@ -36,7 +36,7 @@ export default function () {
           { kg: 40, rep: 8, break_time: 90, performance_time: 88, check: true },
         ],
         title: "바벨 데드리프트",
-        date: 1687909062247,
+        date: new Date().valueOf(),
       },
       {
         _id: "64522bdbcc7614d26c5b806a",

@@ -28,7 +28,7 @@ export const addDivision = (state, payload) => {
 };
 
 export const addMyList = (state, payload) => {
-  console.log(payload.record[0],payload.memo[0])
+  // console.log(payload.record[0],payload.memo[0])
   Object.assign(state.mylist,payload.mylist)
   if(payload.record[0]){
     state.record.push(...payload.record)
@@ -47,7 +47,7 @@ export const updateDivision = (state, payload) => {
 };
 
 export const check = (state, payload) => {
-  console.log(payload)
+  // console.log(payload)
   let data = [];
   state.record.map((a)=>{
     a.record.map((b)=>{
@@ -56,14 +56,14 @@ export const check = (state, payload) => {
       }
     })
   })
-  console.log(data)
+  // console.log(data)
 
   let totalTime = 0;
   data.map((a)=>{
     totalTime = totalTime + a.break_time + a.performance_time;
   })
 
-  console.log(totalTime)
+  // console.log(totalTime)
 
   state.record.find(a=>a.name == payload.record_name).record[payload.num].check = true
   state.record.find(a=>a.name == payload.record_name).record[payload.num].break_time = payload.break_time

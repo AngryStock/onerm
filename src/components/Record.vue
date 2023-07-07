@@ -170,6 +170,10 @@ export default {
       if (!status) {
         this.$store.dispatch('routine/startBreakTimer', this.break_time)
         this.$store.commit('routine/check', { record_name: this.record_name, num: i, break_time: this.break_time })
+        const allChecked = this.record.map(a=> a.check).every(a=>a===true)
+        if(!this.lastList && allChecked){
+          this.$emit('next')
+        }
       } else {
         this.$store.commit('routine/stopBreakTimer')
         this.$store.commit('routine/unCheck', { record_name: this.record_name, num: i })

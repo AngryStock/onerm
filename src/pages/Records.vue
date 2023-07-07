@@ -16,7 +16,7 @@
           }).length - 1)" :break_time="record(a.list_id)[record(a.list_id).length - 1].break_time" :myList="myList"
           :exdate="exdate(a.list_id)" />
         <Footer2 :record="record(a.list_id)" :record_name="a.list_id" :memo="memo(a.list_id)" @opener="opener()"
-           :memoValue="memoValue" />
+          :memoValue="memoValue" />
       </div>
     </Flicking>
   </q-page>
