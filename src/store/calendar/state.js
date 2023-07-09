@@ -1,5 +1,8 @@
 export default function () {
   return {
+    prev_record: [],
+    current_record: [],
+    next_record: [],
     record: [
       {
         _id: "649b72c6f07badde0f32efb1",

@@ -31,9 +31,9 @@
                             <tr v-for="(row, index) in item.CalendarMatrix" :key="index">
                                 <td v-for="(day, index2) in row" :key="index2">
                                     <div v-if="day !== ''">
-                                        <q-btn @click="openRecord(day, clickedMonth, clickedYear)" flat round dense style="width: 50px; height: 50px;">
+                                        <q-btn @click="openRecord(day)" flat round dense style="width: 50px; height: 50px;">
                                             <div v-if="day !== ''">
-                                                <div v-if="record_exist(day, clickedMonth, clickedYear)">
+                                                <div v-if="record_exist(day, calendar_data.indexOf(item))">
                                                     <div class="column items-center" style="margin-top: 5px;">
                                                         <div v-if="index2 === 0" class="sunday">{{ day }}</div>
                                                         <div v-else-if="index2 === 6" class="saturday">{{ day }}</div>
@@ -72,19 +72,15 @@
                         <q-btn @click="shot()" flat round dense :icon="outlinedShare" />
                     </q-card-section>
                     <q-card-section>
-                        <div v-for="(row, index) in calendar_data" :key="index" class="q-pa-md">
-                            <div v-if="row.year == clickedYear && row.month == clickedMonth">
-                                <div v-for="(record, index2) in row.records" :key="index2">
-                                    <div v-if="record.day == clickedDay">
-                                        <div v-for="(data, index3) in record.data.record" :key="index3">
-                                            <div>
-                                                kg : {{ data.kg }}
-                                                rep : {{ data.rep }}
-                                                휴식 : {{ data.break_time }}
-                                                수행 : {{ data.performance_time }}
-                                                title : {{ record.data.title }}
-                                            </div>
-                                        </div>
+                        <div v-for="(row, index) in $store.state.calendar.current_record" :key="index" class="q-pa-md">
+                            <div v-if="row.day == clickedDay">
+                                <div v-for="(record, index2) in row.record" :key="index2">
+                                    <div>
+                                        kg : {{ record.kg }}
+                                        rep : {{ record.rep }}
+                                        휴식 : {{ record.break_time }}
+                                        수행 : {{ record.performance_time }}
+                                        title : {{ row.title }}
                                     </div>
                                 </div>
                             </div>
@@ -131,7 +127,6 @@ export default {
                     StartWeekIndex: null,
                     EndOfDay: null,
                     CalendarMatrix: [],
-                    records: []
                 },
                 {
                     year: new Date().getFullYear(),
@@ -139,7 +134,6 @@ export default {
                     StartWeekIndex: null,
                     EndOfDay: null,
                     CalendarMatrix: [],
-                    records: []
                 },
                 {
                     year: new Date().getFullYear(),
@@ -147,7 +141,6 @@ export default {
                     StartWeekIndex: null,
                     EndOfDay: null,
                     CalendarMatrix: [],
-                    records: []
                 }
             ]
         }
@@ -182,20 +175,7 @@ export default {
                 this.calendar_data[i].StartWeekIndex = this.getStartWeek(this.calendar_data[i].year, this.calendar_data[i].month);
                 this.calendar_data[i].EndOfDay = this.getEndOfDay(this.calendar_data[i].year, this.calendar_data[i].month);
                 this.calendar_data[i].CalendarMatrix = this.initCalendar(this.calendar_data[i].StartWeekIndex, this.calendar_data[i].EndOfDay);
-                for (var record of this.$store.state.calendar.record) {
-                    var record_year = date.formatDate(record.date, 'YYYY');
-                    var record_month = date.formatDate(record.date, 'M');
-                    var record_day = date.formatDate(record.date, 'D');
-                    if (record_month == this.calendar_data[i].month && record_year == this.calendar_data[i].year) {
-                        var temp = {
-                            day: record_day,
-                            data: record
-                        }
-                        this.calendar_data[i].records.push(temp);
-                    }
-                }
             }
-            console.log(this.$refs.cal_flicking.index)
         },
         initCalendar: function (currentMonthStartWeekIndex, endOfDay) {
             let currentCalendarMatrix = [];
@@ -218,16 +198,39 @@ export default {
             }
             return currentCalendarMatrix;
         },
-        record_exist: function (day, month, year) { // 해당 일자에 기록이 있는지 확인
-            for (var record of this.$store.state.calendar.record) {
+        record_exist: function (day, index) { // 해당 일자에 기록이 있는지 확인
+            if(index == 0) {
+                for(let i=0; i<this.$store.state.calendar.prev_record.length; i++) {
+                    if(this.$store.state.calendar.prev_record[i].day == day) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            else if(index == 1) {
+                for(let i=0; i<this.$store.state.calendar.current_record.length; i++) {
+                    if(this.$store.state.calendar.current_record[i].day == day) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            else if(index == 2) {
+                for(let i=0; i<this.$store.state.calendar.next_record.length; i++) {
+                    if(this.$store.state.calendar.next_record[i].day == day) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            /*for (var record of this.$store.state.calendar.record) {
                 var record_year = date.formatDate(record.date, 'YYYY');
                 var record_month = date.formatDate(record.date, 'M');
                 var record_day = date.formatDate(record.date, 'D');
                 if (record_day == day && record_month == month && record_year == year) {
                     return true;
                 }
-            }
-            return false;
+            }*/
         },
         getThisMonthRecord: function (month) { //이번달 기록 가져오기 [1, 3, 7, 31]
             return month;
@@ -235,11 +238,15 @@ export default {
         getDayRecord: function (day) { // 해당일자 기록 가져오기
             return day;
         },
-        openRecord: function (day, month, year) {
-            if (this.record_exist(day, month, year)) {
-                this.icon = true;
-                this.clickedDay = day;
+        openRecord: function (day) {
+            for(var record of this.$store.state.calendar.current_record) {
+                if(day == record.day){
+                    this.icon = true;
+                    this.clickedDay = day;
+                    return true;
+                }
             }
+            return false;
         },
         getEndOfDay: function (year, month) {
             switch (month) {
@@ -315,15 +322,13 @@ export default {
         onClickNext: function () {
             this.$refs.cal_flicking.next()
         },
-        makeMonth: function (e) {
-            console.log('make');
+        makeMonth: async function (e) {
             let obj = {
                 year: null,
                 month: null,
                 StartWeekIndex: null,
                 EndOfDay: null,
                 CalendarMatrix: [],
-                records: []
             }
             if (e.direction === 'PREV') {
                 let target = this.calendar_data.at(0)
@@ -338,20 +343,9 @@ export default {
                 obj.StartWeekIndex = this.getStartWeek(obj.year, obj.month);
                 obj.EndOfDay = this.getEndOfDay(obj.year, obj.month);
                 obj.CalendarMatrix = this.initCalendar(obj.StartWeekIndex, obj.EndOfDay);
-                this.calendar_data.splice(0, 0, ...[obj])
-                this.$store.dispatch('calendar/getCalendar');
-                for (var record of this.$store.state.calendar.record) {
-                    var record_year = date.formatDate(record.date, 'YYYY');
-                    var record_month = date.formatDate(record.date, 'M');
-                    var record_day = date.formatDate(record.date, 'D');
-                    if (record_month == obj.month && record_year == obj.year) {
-                        var temp = {
-                            day: record_day,
-                            data: record
-                        }
-                        obj.records.push(temp);
-                    }
-                }
+                await this.$store.dispatch('calendar/getPrevRecord', [obj.year, obj.month]);
+                this.calendar_data.unshift(obj);
+                this.calendar_data.pop();
             }
             else if (e.direction === 'NEXT') {
                 let target = this.calendar_data.at(-1)
@@ -366,7 +360,9 @@ export default {
                 obj.StartWeekIndex = this.getStartWeek(obj.year, obj.month);
                 obj.EndOfDay = this.getEndOfDay(obj.year, obj.month);
                 obj.CalendarMatrix = this.initCalendar(obj.StartWeekIndex, obj.EndOfDay);
+                await this.$store.dispatch('calendar/getNextRecord', [obj.year, obj.month]);
                 this.calendar_data.push(obj);
+                this.calendar_data.shift();
             }
             console.log(this.calendar_data);
         }
@@ -400,7 +396,7 @@ a {
     display: none;
 }
 .calendar_table {
-    height: calc(100% - 74px);
+    /*height: calc(100% - 74px);*/
     margin: auto;
 }
 
