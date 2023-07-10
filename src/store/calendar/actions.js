@@ -1,8 +1,7 @@
 import { api } from "src/boot/axios";
 
-export const setDate = (context,payload) =>{
+export const setData = (context,payload) =>{
   api.get('/set_calendar').then((res)=>{
-    console.log('123',res)
     context.commit('setData', res.data)
   })
 }
