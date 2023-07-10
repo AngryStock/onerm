@@ -17,7 +17,6 @@ if ($store.state.profile.profile._id == null) {
     console.log(res)
     $store.commit('profile/setData', res.data.profile)
     $store.commit('routine/setData', res.data.routine)
-    $store.commit('calendar/setData', res.data.calendar)
   })
 }
 $q.dark.set(LocalStorage.getItem("darkMode"))

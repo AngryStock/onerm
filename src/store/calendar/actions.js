@@ -1,5 +1,12 @@
 import { api } from "src/boot/axios";
 
+export const setDate = (context,payload) =>{
+  api.get('/set_calendar').then((res)=>{
+    console.log('123',res)
+    context.commit('setData', res.data)
+  })
+}
+
 
 export const getPrevRecord = (context, payload) =>{// ex) payload = [2023, 6]
   context.state.next_record = context.state.current_record
@@ -10,7 +17,7 @@ export const getPrevRecord = (context, payload) =>{// ex) payload = [2023, 6]
       month:payload[1]
     }
   }).then((res)=>{
-    console.log(res)
+    // console.log(res)
     context.commit('getPrevRecord', res.data)
   })
 }
@@ -24,7 +31,7 @@ export const getNextRecord = (context, payload) =>{ // ex) payload = [2023, 6]
       month:payload[1]
     }
   }).then((res)=>{
-    console.log(res)
+    // console.log(res)
     context.commit('getNextRecord', res.data)
   })
  }

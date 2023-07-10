@@ -146,6 +146,7 @@ export default {
         }
     },
     mounted() {
+        this.$store.dispatch('calendar/setDate')
         this.init();
     },
     methods: {
