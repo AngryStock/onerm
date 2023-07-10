@@ -3,9 +3,9 @@
         <div class="calendar_container">
             <div class="row items-center q-pa-lg text-bold">
                 <q-space />
-                <q-btn @click="onClickPrev()" flat round dense label="<" size="lg"></q-btn>
-                <text-h1 style="font-size: 24px;">{{ clickedYear }}년 {{ clickedMonth }}월</text-h1>
-                <q-btn @click="onClickNext()" flat round dense label=">" size="lg"></q-btn>
+                <q-btn @click="onClickPrev()" class="text_target" flat round dense label="<" size="lg"></q-btn>
+                <text-h1 style="font-size: 24px;" class="text_target">{{ clickedYear }}년 {{ clickedMonth }}월</text-h1>
+                <q-btn @click="onClickNext()" class="text_target" flat round dense label=">" size="lg"></q-btn>
                 <q-space />
             </div>
             <Flicking @changed="e => nextMonth(e)" ref="cal_flicking" :options="{
@@ -23,7 +23,7 @@
                                 <td v-for="(dayname, index) in daynames" v-bind:key="index">
                                     <span v-if="index === 0" class="sunday">{{ dayname }}</span>
                                     <span v-else-if="index === 6" class="saturday">{{ dayname }}</span>
-                                    <span v-else class="weekday">{{ dayname }}</span>
+                                    <span v-else class="text_target">{{ dayname }}</span>
                                 </td>
                             </tr>
                         </thead>
@@ -37,7 +37,7 @@
                                                     <div class="column items-center" style="margin-top: 5px;">
                                                         <div v-if="index2 === 0" class="sunday">{{ day }}</div>
                                                         <div v-else-if="index2 === 6" class="saturday">{{ day }}</div>
-                                                        <div v-else class="weekday">{{ day }}</div>
+                                                        <div v-else class="text_target">{{ day }}</div>
                                                         <div class="dot"></div>
                                                     </div>
                                                 </div>
@@ -45,7 +45,7 @@
                                                     <div class="column items-center">
                                                         <div v-if="index2 === 0" class="sunday">{{ day }}</div>
                                                         <div v-else-if="index2 === 6" class="saturday">{{ day }}</div>
-                                                        <div v-else class="weekday">{{ day }}</div>
+                                                        <div v-else class="text_target">{{ day }}</div>
                                                     </div>
                                                 </div>
                                             </div>
