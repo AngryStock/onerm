@@ -1,6 +1,7 @@
 import { date } from 'quasar';
 
 export const setData = (state, payload) => {
+  console.log(performance.now())
   let current_year = new Date().getFullYear();
   let current_month = new Date().getMonth();
   let boundary = new Date(current_year, current_month, 1).getTime();
@@ -16,6 +17,43 @@ export const setData = (state, payload) => {
     }
     record.day = date.formatDate(record.date, 'D');
   }
+  state.current_record.sort(function (a, b) {
+    return a.date - b.date;
+  })
+  state.prev_record.sort(function (a, b) {
+    return a.date - b.date;
+  })
+  var list1 = [[]];
+  for(let record of state.prev_record) {
+    if(list1[0].length == 0) {
+      list1[0].push(record);
+    }
+    else {
+      if(list1.at(-1)[0].date == record.date) {
+        list1.at(-1).push(record);
+      }
+      else {
+        list1.push([record]);
+      }
+    }
+  }
+  state.prev_record = list1
+  var list2 = [[]];
+  for(let record of state.current_record) {
+    if(list2[0].length == 0) {
+      list2[0].push(record);
+    }
+    else {
+      if(list2.at(-1)[0].date == record.date) {
+        list2.at(-1).push(record);
+      }
+      else {
+        list2.push([record]);
+      }
+    }
+  }
+  state.current_record = list2;
+  console.log(state.prev_record, state.current_record);
 }
 
 export const getPrevRecord = (state, payload) =>{

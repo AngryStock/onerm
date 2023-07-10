@@ -62,7 +62,7 @@
         <q-dialog v-model="icon">
             <div ref="targetElement" class="modal_card">
                 <q-card style="height: 100%;">
-                    <q-card-section class="row items-center q-pb-none">
+                    <q-card-section class="row items-center q-pb-md">
                         <q-btn icon="close" flat round dense v-close-popup />
                         <q-space />
                         <q-btn @click="onClickPrevRecord(currentMonth)" flat round dense label="<" size="lg"></q-btn>
@@ -71,16 +71,21 @@
                         <q-space />
                         <q-btn @click="shot()" flat round dense :icon="outlinedShare" />
                     </q-card-section>
-                    <q-card-section>
-                        <div v-for="(row, index) in $store.state.calendar.current_record" :key="index" class="q-pa-md">
+                    <q-card-section class="recordlist">
+                        <div v-for="(row, index) in $store.state.calendar.current_record" :key="index">
                             <div v-if="row.day == clickedDay">
-                                <div v-for="(record, index2) in row.record" :key="index2">
-                                    <div>
-                                        kg : {{ record.kg }}
-                                        rep : {{ record.rep }}
-                                        휴식 : {{ record.break_time }}
-                                        수행 : {{ record.performance_time }}
-                                        title : {{ row.title }}
+                                <div>{{ row.title }}</div>
+                                <div>최고 무게 : {{ get_max_kg(row.record) }}KG</div>
+                                <div>예상 1RM : {{ onerm(row.record) }}KG</div>
+                                <div class="row justify-start">
+                                    <div v-for="(record, index2) in row.record" :key="index2">
+                                        <div class="q-pa-xs column items-center">
+                                            <q-avatar size="lg" color="red" text-color="white">{{ record.kg }}
+                                            </q-avatar>
+                                            <text-body1 text-color="white">
+                                                {{ record.rep }}회
+                                            </text-body1>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +102,6 @@ import { outlinedShare } from '@quasar/extras/material-icons-outlined'
 import { ref } from 'vue'
 import html2canvas from 'html2canvas';
 import { Platform } from 'quasar';
-import { date } from 'quasar';
 export default {
     name: 'app_calendar',
     setup() {
@@ -224,14 +228,6 @@ export default {
                 }
                 return false;
             }
-            /*for (var record of this.$store.state.calendar.record) {
-                var record_year = date.formatDate(record.date, 'YYYY');
-                var record_month = date.formatDate(record.date, 'M');
-                var record_day = date.formatDate(record.date, 'D');
-                if (record_day == day && record_month == month && record_year == year) {
-                    return true;
-                }
-            }*/
         },
         getThisMonthRecord: function (month) { //이번달 기록 가져오기 [1, 3, 7, 31]
             return month;
@@ -366,6 +362,24 @@ export default {
                 this.calendar_data.shift();
             }
             console.log(this.calendar_data);
+        },
+        onerm: function(set) {
+            var max_kg = [];
+            var max_rep = [];
+            for (var i = 0; i < set.length; i++) {
+                max_kg.push(set[i].kg);
+                max_rep.push(set[i].rep);
+            }
+            return Math.floor(Math.max(...max_kg) * (1 + Math.max(...max_rep) / 30));
+        },
+        get_max_kg: function(set) {
+            var max_kg = -1;
+            for (var record of set) {
+                if (max_kg < record.kg) {
+                    max_kg = record.kg;
+                }
+            }
+            return max_kg;
         }
     }
 };
@@ -386,14 +400,16 @@ a {
     display: none;
 }
 .modal_card {
+    margin-top: 40px;
+    height: 95%;
+}
+.recordlist {
+    height: 80%;
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    margin-top: 40px;
-    height: 95%;
-    z-index: 9999;
 }
-.modal_card::-webkit-scrollbar {
+.recordlist::-webkit-scrollbar {
     display: none;
 }
 .calendar_table {

@@ -10,6 +10,16 @@ const routes = [
 		children: [{ path: "",name: "calendar", component: () => import("pages/Calendar.vue") }],
 	},
 	{
+		path: "/trainer",
+		component: () => import("layouts/MainLayout.vue"),
+		children: [{ path: "",name: "trainer", component: () => import("pages/Trainer.vue") }],
+	},
+	{
+		path: "/gymlist",
+		component: () => import("layouts/MainLayout.vue"),
+		children: [{ path: "",name: "gymlist", component: () => import("pages/GymList.vue") }],
+	},
+	{
 		path: "/routine",
 		component: () => import("layouts/MainLayout.vue"),
 		children: [
