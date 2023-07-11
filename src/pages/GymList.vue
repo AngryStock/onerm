@@ -1,54 +1,148 @@
 <template>
-    서울시 강동구 고덕동
-    <div v-for="(gym, index) in gyms" :key="index">
-        <q-btn color="white" text-color="black">
-            <q-img :src="url" spinner-color="white" style="height: 140px; max-width: 150px"/>
-            <div style="width: 150px;">
-                {{ gym.name }}
-                {{ gym.distance }}
-                {{ gym.location }}
-            </div>
-        </q-btn>
+  <q-page>
+  <div class="home_container_err">
+    <div class="header2">
+      <div class="routine_header_container">
+        <table class="routine_header">
+          <tr>
+            <td class="routine_header_back_btn">
+              <i class="fa-solid fa-chevron-left"></i>
+            </td>
+            <td class="routine_header_name_btn add_list_search_box">
+              <i class="fa-solid fa-magnifying-glass add_list_search_icon"></i>
+              <input
+                class="add_list_search_input"
+                type="text"
+                placeholder="헬스장검색"
+                v-model="text"
+                @input="search(text, $event.data)"
+              />
+            </td>
+            <td class="routine_header_add_btn">추가</td>
+          </tr>
+        </table>
+      </div>
     </div>
-    <Footer1/>
+    <div class="main">
+      <div class="main_grid">
+        <div v-for="(a, i) in gymlist" :key="i" class="gymlist_item">
+          <div class="gmylist_item_img"></div>
+          <div class="gmylist_item_content">
+            <div class="gymlist_item_title">{{ a.place_name }}</div>
+            <div class="gymlist_item_address">
+              <div style="width: 70%; text-align: left">
+                {{ a.address_name.replace(/[0-9\-]/g, "") }}
+              </div>
+              <div style="width: 30%; text-align: right">
+                {{ Math.round(a.distance / 100) / 10 }}km
+              </div>
+            </div>
+            <br />
+
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <Footer1/>
+</q-page>
 </template>
 
 <script>
-import {ref} from 'vue'
 export default {
-    setup() {
-        const url = ref('https://picsum.photos/500/300')
-        return {
-            url
-        }
+  name: "app_gymlist",
+  data() {
+    return {
+      text: "",
+      gymlist: [],
+    };
+  },
+  methods: {
+    search(a, b) {
+      console.log(a, b);
     },
-    data() {
-        return {
-            gyms: [
-                {
-                    name: '명동 은행회관 헬스클럽',
-                    distance: '0.2km',
-                    location: '서울 중구 명동1가',
-                    detail: ''
-                },
-                {
-                    name: '을지로 크로스핏 삼손',
-                    distance: '0.3km',
-                    location: '서울 중구 수표동',
-                    detail: ''
-                },
-                {
-                    name: '종로 스포짐',
-                    distance: '0.7km',
-                    location: '서울 종로구 서린동',
-                    detail: ''
-                }
-            ]
-        }
+    loadplaces() {
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        console.log(position);
+        var places = await new window.kakao.maps.services.Places();
+        var callback = (result, status) => {
+          if (status === window.kakao.maps.services.Status.OK) {
+            var copy1 = Object.assign([], result);
+            console.log(copy1);
+            this.gymlist.push(...copy1);
+            console.log(this.gymlist);
+          } else {
+            console.error("Keyword search failed: ", status);
+          }
+        };
+        places.keywordSearch("헬스장", callback, {
+          location: new window.kakao.maps.LatLng(
+            position.coords.latitude,
+            position.coords.longitude
+          ),
+          // x:position.coords.latitude.toString(),
+          // y:position.coords.longitude.toString(),
+          radius: 20000,
+          page: 1,
+          size: 15,
+          sort: "distance",
+        });
+      });
+    },
+    loadscript() {
+      console.log(process.env.VUE_APP_KAKAO_JAVASCRIPT_KEY)
+      const script = document.createElement("script");
+      script.src =
+        "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=" +
+        process.env.VUE_APP_KAKAO_JAVASCRIPT_KEY +
+        "&libraries=services";
+      script.onload = () =>
+        window.kakao.maps.load(() => {
+          this.loadplaces();
+        });
+      document.head.appendChild(script);
+    },
+  },
+  mounted() {
+    if (window.kakao && window.kakao.mpas) {
+      this.loadplaces();
+    } else {
+      this.loadscript();
     }
-}
-
+  },
+};
 </script>
 
-<style>
+<style scoped>
+.gymlist_item_address {
+  width: 100%;
+  font-size: 12px;
+  display: flex;
+}
+.gymlist_item_title {
+  width: 100%;
+  font-weight: 700;
+  text-align: left;
+}
+.main_grid {
+  display: grid;
+  gap: 10px;
+}
+.gymlist_item {
+  display: flex;
+}
+.gmylist_item_img {
+  height: 130px;
+  width: 170px;
+  background-image: url("../assets/이미지준비중.png");
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+}
+.gmylist_item_content {
+  padding: 10px;
+  height: 130px;
+  width: calc(100% - 170px);
+}
 </style>

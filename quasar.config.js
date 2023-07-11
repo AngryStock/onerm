@@ -7,6 +7,8 @@
 
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
+const DotEnv = require('dotenv')
+DotEnv.config()
 
 const { configure } = require("quasar/wrappers");
 
@@ -63,7 +65,9 @@ module.exports = configure(function (/* ctx */) {
 
       // publicPath: '/',
       // analyze: true,
-      // env: {},
+      env: {
+        VUE_APP_KAKAO_JAVASCRIPT_KEY:process.env.VUE_APP_KAKAO_JAVASCRIPT_KEY
+      },
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
