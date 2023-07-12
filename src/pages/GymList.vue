@@ -90,7 +90,7 @@ export default {
     },
   },
   mounted() {
-    if (window.kakao && window.kakao.mpas) {
+    if (window.kakao && window.kakao.maps) {
       this.loadplaces();
     } else {
       this.loadscript();
