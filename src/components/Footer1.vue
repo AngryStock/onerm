@@ -1,6 +1,6 @@
 <template>
   <q-footer class="target text_target border_top_target" style="border-radius: 20px;">
-    <q-tabs v-model="tab" active-color="primary" indicator-color="transparent" dense style="height: 60px">
+    <q-tabs v-model="tab" active-color="primary" indicator-color="transparent" dense style="height: 60px;">
       <q-route-tab v-for="(a, i) in routeLink" :key="i" :to="a.to" :name="a.name" :icon="a.icon" :label="a.label" :disable="a.disable" />
     </q-tabs>
   </q-footer>
@@ -27,5 +27,7 @@ const routeLink = [
 :deep(.q-tab__icon) {
   font-size: 24px;
 }
+
+
 </style>
 

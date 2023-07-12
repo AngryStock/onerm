@@ -16,7 +16,7 @@
     </div>
 
 
-    <div style="height: calc(100% - 50px);" class=" overflow-auto">
+    <div style="height: calc(100% - 51px);" class=" overflow-auto">
       <div class="q-pa-md">
         <q-btn-group flat class="full-width text_target flex flex-center q-ma-md">
           <q-btn>

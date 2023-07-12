@@ -15,7 +15,7 @@
         <q-btn flat class="text-bold" style="font-size: 14px" @click="openListPopup()">추가</q-btn>
       </q-toolbar>
     </div>
-    <div style="height: calc(100% - 50px);" class=" overflow-auto">
+    <div style="height: calc(100% - 51px);" class=" overflow-auto">
       <div class="q-pa-md">
         <div v-for="(a, i) in $store.state.routine.mylist.filter((a) => {
           return a.id == this.myList

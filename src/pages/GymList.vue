@@ -1,52 +1,37 @@
 <template>
   <q-page>
-  <div class="home_container_err">
-    <div class="header2">
-      <div class="routine_header_container">
-        <table class="routine_header">
-          <tr>
-            <td class="routine_header_back_btn">
-              <i class="fa-solid fa-chevron-left"></i>
-            </td>
-            <td class="routine_header_name_btn add_list_search_box">
-              <i class="fa-solid fa-magnifying-glass add_list_search_icon"></i>
-              <input
-                class="add_list_search_input"
-                type="text"
-                placeholder="헬스장검색"
-                v-model="text"
-                @input="search(text, $event.data)"
-              />
-            </td>
-            <td class="routine_header_add_btn">추가</td>
-          </tr>
-        </table>
-      </div>
+    <div class="target text_target border_bottom_target q-px-md" style="border-radius: 20px;">
+      <q-toolbar >
+        <q-toolbar-title><q-input input-class="text-left" borderless dense placeholder="헬스장 검색">
+          <template v-slot:append>
+            <q-icon name="search"></q-icon>
+          </template>
+        </q-input></q-toolbar-title>
+      </q-toolbar>
     </div>
-    <div class="main">
-      <div class="main_grid">
-        <div v-for="(a, i) in gymlist" :key="i" class="gymlist_item">
-          <div class="gmylist_item_img"></div>
-          <div class="gmylist_item_content">
-            <div class="gymlist_item_title">{{ a.place_name }}</div>
-            <div class="gymlist_item_address">
-              <div style="width: 70%; text-align: left">
-                {{ a.address_name.replace(/[0-9\-]/g, "") }}
+      <div style="height: calc(100% - 51px);" class=" overflow-auto">
+        <div class="main_grid">
+          <div v-for="(a, i) in gymlist" :key="i" class="gymlist_item">
+            <div class="gmylist_item_img"></div>
+            <div class="gmylist_item_content">
+              <div class="gymlist_item_title">{{ a.place_name }}</div>
+              <div class="gymlist_item_address">
+                <div style="width: 70%; text-align: left">
+                  {{ a.address_name.replace(/[0-9\-]/g, "") }}
+                </div>
+                <div style="width: 30%; text-align: right">
+                  {{ Math.round(a.distance / 100) / 10 }}km
+                </div>
               </div>
-              <div style="width: 30%; text-align: right">
-                {{ Math.round(a.distance / 100) / 10 }}km
-              </div>
-            </div>
-            <br />
+              <br />
 
-            <br />
+              <br />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <Footer1/>
-</q-page>
+    <Footer1 />
+  </q-page>
 </template>
 
 <script>
@@ -120,18 +105,22 @@ export default {
   font-size: 12px;
   display: flex;
 }
+
 .gymlist_item_title {
   width: 100%;
   font-weight: 700;
   text-align: left;
 }
+
 .main_grid {
   display: grid;
   gap: 10px;
 }
+
 .gymlist_item {
   display: flex;
 }
+
 .gmylist_item_img {
   height: 130px;
   width: 170px;
@@ -140,6 +129,7 @@ export default {
   background-size: cover;
   border-radius: 10px;
 }
+
 .gmylist_item_content {
   padding: 10px;
   height: 130px;
