@@ -10,25 +10,24 @@
       </q-toolbar>
     </div>
       <div style="height: calc(100% - 51px);" class=" overflow-auto">
-        <div class="main_grid">
-          <div v-for="(a, i) in gymlist" :key="i" class="gymlist_item">
-            <div class="gmylist_item_img"></div>
-            <div class="gmylist_item_content">
-              <div class="gymlist_item_title">{{ a.place_name }}</div>
-              <div class="gymlist_item_address">
-                <div style="width: 70%; text-align: left">
+        <div class="q-pa-sm">
+          <div class="column q-gutter-y-sm">
+            <div class="col flex" v-for="(a,i) in gymlist" :key="i">
+              <q-img :ratio="17/13" width="170px" src="../assets/이미지준비중.png" style="border-radius: 10px;"></q-img>
+              <div style="width: calc(100% - 170px);" class="q-pa-sm">
+                <div class="text-bold text-left full-width">{{ a.place_name }}</div>
+                <div class="flex full-width" style="font-size: 12px;">
+                  <div style="width: 70%;" class="text-left">
                   {{ a.address_name.replace(/[0-9\-]/g, "") }}
                 </div>
-                <div style="width: 30%; text-align: right">
+                  <div style="width: 30%;" class="text-right">
                   {{ Math.round(a.distance / 100) / 10 }}km
                 </div>
+                </div>
               </div>
-              <br />
-
-              <br />
             </div>
           </div>
-        </div>
+      </div>
       </div>
     <Footer1 />
   </q-page>
@@ -100,39 +99,4 @@ export default {
 </script>
 
 <style scoped>
-.gymlist_item_address {
-  width: 100%;
-  font-size: 12px;
-  display: flex;
-}
-
-.gymlist_item_title {
-  width: 100%;
-  font-weight: 700;
-  text-align: left;
-}
-
-.main_grid {
-  display: grid;
-  gap: 10px;
-}
-
-.gymlist_item {
-  display: flex;
-}
-
-.gmylist_item_img {
-  height: 130px;
-  width: 170px;
-  background-image: url("../assets/이미지준비중.png");
-  background-position: center;
-  background-size: cover;
-  border-radius: 10px;
-}
-
-.gmylist_item_content {
-  padding: 10px;
-  height: 130px;
-  width: calc(100% - 170px);
-}
 </style>
