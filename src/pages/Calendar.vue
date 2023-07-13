@@ -65,26 +65,28 @@
                     <q-card-section class="row items-center q-pb-md">
                         <q-btn icon="close" flat round dense v-close-popup />
                         <q-space />
-                        <q-btn @click="onClickPrevRecord(currentMonth)" flat round dense label="<" size="lg"></q-btn>
+                        <q-btn @click="onClickPrevRecord()" flat round dense label="<" size="lg"></q-btn>
                         <div class="text-h6">{{ clickedYear }}년 {{ clickedMonth }}월 {{ clickedDay }}일</div>
-                        <q-btn @click="onClickNextRecord(currentMonth)" flat round dense label=">" size="lg"></q-btn>
+                        <q-btn @click="onClickNextRecord()" flat round dense label=">" size="lg"></q-btn>
                         <q-space />
                         <q-btn @click="shot()" flat round dense :icon="outlinedShare" />
                     </q-card-section>
                     <q-card-section class="recordlist">
                         <div v-for="(row, index) in $store.state.calendar.current_record" :key="index">
-                            <div v-if="row.day == clickedDay">
-                                <div>{{ row.title }}</div>
-                                <div>최고 무게 : {{ get_max_kg(row.record) }}KG</div>
-                                <div>예상 1RM : {{ onerm(row.record) }}KG</div>
-                                <div class="row justify-start">
-                                    <div v-for="(record, index2) in row.record" :key="index2">
-                                        <div class="q-pa-xs column items-center">
-                                            <q-avatar size="lg" color="red" text-color="white">{{ record.kg }}
-                                            </q-avatar>
-                                            <text-body1 text-color="white">
-                                                {{ record.rep }}회
-                                            </text-body1>
+                            <div v-if="row[0][0].day == clickedDay">
+                                <div v-for="(group, index2) in row[clickedIndex]" :key="index2">
+                                    <div>{{ group.title }}</div>
+                                    <div>최고 무게 : {{ get_max_kg(group.record) }}KG</div>
+                                    <div>예상 1RM : {{ onerm(group.record) }}KG</div>
+                                    <div class="row justify-start">
+                                        <div v-for="(record, index3) in group.record" :key="index3">
+                                            <div class="q-pa-xs column items-center">
+                                                <q-avatar size="lg" color="red" text-color="white">{{ record.kg }}
+                                                </q-avatar>
+                                                <text-body1 text-color="white">
+                                                    {{ record.rep }}회
+                                                </text-body1>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -121,9 +123,8 @@ export default {
             clickedYear: new Date().getFullYear(),
             clickedMonth: new Date().getMonth() + 1,
             clickedDay: new Date().getDate(),
-            currentMonthStartWeekIndex: null,
-            currentCalendarMatrix: [],
-            endOfDay: null,
+            clickedIndex: 0,
+            maxIndex: 0,
             calendar_data: [
                 {
                     year: new Date().getFullYear(),
@@ -206,7 +207,7 @@ export default {
         record_exist: function (day, index) { // 해당 일자에 기록이 있는지 확인
             if(index == 0) {
                 for(let i=0; i<this.$store.state.calendar.prev_record.length; i++) {
-                    if(this.$store.state.calendar.prev_record[i].day == day) {
+                    if(this.$store.state.calendar.prev_record[i][0][0].day == day) {
                         return true;
                     }
                 }
@@ -214,7 +215,7 @@ export default {
             }
             else if(index == 1) {
                 for(let i=0; i<this.$store.state.calendar.current_record.length; i++) {
-                    if(this.$store.state.calendar.current_record[i].day == day) {
+                    if(this.$store.state.calendar.current_record[i][0][0].day == day) {
                         return true;
                     }
                 }
@@ -222,24 +223,20 @@ export default {
             }
             else if(index == 2) {
                 for(let i=0; i<this.$store.state.calendar.next_record.length; i++) {
-                    if(this.$store.state.calendar.next_record[i].day == day) {
+                    if(this.$store.state.calendar.next_record[i][0][0].day == day) {
                         return true;
                     }
                 }
                 return false;
             }
         },
-        getThisMonthRecord: function (month) { //이번달 기록 가져오기 [1, 3, 7, 31]
-            return month;
-        },
-        getDayRecord: function (day) { // 해당일자 기록 가져오기
-            return day;
-        },
         openRecord: function (day) {
             for(var record of this.$store.state.calendar.current_record) {
-                if(day == record.day){
+                if(day == record[0][0].day){
                     this.icon = true;
                     this.clickedDay = day;
+                    this.clickedIndex = 0;
+                    this.maxIndex = record.length;
                     return true;
                 }
             }
@@ -297,10 +294,14 @@ export default {
             }
         },
         onClickNextRecord: function () {
-
+            if (this.clickedIndex != this.maxIndex-1) {
+                this.clickedIndex++;
+            }
         },
         onClickPrevRecord: function() {
-
+            if (this.clickedIndex != 0) {
+                this.clickedIndex--;
+            }
         },
         nextMonth: function (e) {
             this.clickedMonth = this.calendar_data[e.index].month
