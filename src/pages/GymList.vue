@@ -12,19 +12,22 @@
       <div style="height: calc(100% - 51px);" class=" overflow-auto">
         <div class="q-pa-sm">
           <div class="column q-gutter-y-sm">
-            <div class="col flex" v-for="(a,i) in gymlist" :key="i">
-              <q-img :ratio="17/13" width="170px" src="../assets/이미지준비중.png" style="border-radius: 10px;"></q-img>
-              <div style="width: calc(100% - 170px);" class="q-pa-sm">
-                <div class="text-bold text-left full-width">{{ a.place_name }}</div>
+            <div class="col flex full-width" v-for="(a,i) in gymlist" :key="i">
+              <div style="width: 50%;">
+              <q-img :ratio="17/13" src="../assets/이미지준비중.png" style="border-radius: 10px; max-width: 170px; max-height: 130px;" ></q-img>
+            </div>
+            <div style="width: 50%;">
+              <div style="width: calc(100% - 170px);" class="q-pa-sm full-width">
+                <q-item class="text-bold text-left"><q-item-label lines="1">{{ a.place_name }}</q-item-label></q-item>
                 <div class="flex full-width" style="font-size: 12px;">
-                  <div style="width: 70%;" class="text-left">
-                  {{ a.address_name.replace(/[0-9\-]/g, "") }}
-                </div>
-                  <div style="width: 30%;" class="text-right">
-                  {{ Math.round(a.distance / 100) / 10 }}km
+                  <q-item class="text-left"><q-item-label lines="1">{{ a.address_name }}</q-item-label></q-item>
+                  <div class="flex justify-start items-center full-width">
+                      <q-icon name="location_on"/>
+                    {{ Math.round(a.distance / 100) / 10 }}km
                 </div>
                 </div>
               </div>
+            </div>
             </div>
           </div>
       </div>
@@ -99,4 +102,9 @@ export default {
 </script>
 
 <style scoped>
+.q-item {
+  padding: 0px;
+  min-height: 0;
+}
+
 </style>
