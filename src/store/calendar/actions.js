@@ -16,7 +16,6 @@ export const getPrevRecord = (context, payload) =>{// ex) payload = [2023, 6]
       month:payload[1]
     }
   }).then((res)=>{
-    // console.log(res)
     context.commit('getPrevRecord', res.data)
   })
 }
@@ -30,7 +29,6 @@ export const getNextRecord = (context, payload) =>{ // ex) payload = [2023, 6]
       month:payload[1]
     }
   }).then((res)=>{
-    // console.log(res)
     context.commit('getNextRecord', res.data)
   })
  }

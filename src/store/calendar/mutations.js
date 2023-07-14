@@ -31,7 +31,6 @@ export const setData = (state, payload) => {
             if (list1.at(-1)[0][0].day == record.day) {
                 if (list1.at(-1).at(-1)[0].date == record.date) {
                     list1.at(-1).at(-1).push(record);
-                    console.log(1)
                 }
                 else {
                     list1.at(-1).push([record]);
@@ -52,7 +51,6 @@ export const setData = (state, payload) => {
             if (list2.at(-1)[0][0].day == record.day) {
                 if (list2.at(-1).at(-1)[0].date == record.date) {
                     list2.at(-1).at(-1).push(record);
-                    console.log(1)
                 }
                 else {
                     list2.at(-1).push([record]);
@@ -72,11 +70,58 @@ export const getPrevRecord = (state, payload) => {
         record.day = date.formatDate(record.date, 'D');
     }
     state.prev_record = payload
+    state.prev_record.sort(function (a, b) {
+        return a.date - b.date;
+    })
+    var list1 = [[[]]];
+    for (let record of state.prev_record) {
+        if (list1[0][0].length == 0) {
+            list1[0][0].push(record);
+        }
+        else {
+            if (list1.at(-1)[0][0].day == record.day) {
+                if (list1.at(-1).at(-1)[0].date == record.date) {
+                    list1.at(-1).at(-1).push(record);
+                }
+                else {
+                    list1.at(-1).push([record]);
+                }
+            }
+            else {
+                list1.push([[record]]);
+            }
+        }
     }
+    state.prev_record = list1
+}
 
 export const getNextRecord = (state, payload) => {
     for (let record of payload) {
         record.day = date.formatDate(record.date, 'D');
     }
     state.next_record = payload
+    state.next_record = payload
+    state.next_record.sort(function (a, b) {
+        return a.date - b.date;
+    })
+    var list1 = [[[]]];
+    for (let record of state.next_record) {
+        if (list1[0][0].length == 0) {
+            list1[0][0].push(record);
+        }
+        else {
+            if (list1.at(-1)[0][0].day == record.day) {
+                if (list1.at(-1).at(-1)[0].date == record.date) {
+                    list1.at(-1).at(-1).push(record);
+                }
+                else {
+                    list1.at(-1).push([record]);
+                }
+            }
+            else {
+                list1.push([[record]]);
+            }
+        }
+    }
+    state.next_record = list1
 }

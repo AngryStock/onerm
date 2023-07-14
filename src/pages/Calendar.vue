@@ -207,7 +207,7 @@ export default {
         record_exist: function (day, index) { // 해당 일자에 기록이 있는지 확인
             if(index == 0) {
                 for(let i=0; i<this.$store.state.calendar.prev_record.length; i++) {
-                    if(this.$store.state.calendar.prev_record[i][0][0].day == day) {
+                    if(this.$store.state.calendar.prev_record[i][0].length != 0 && this.$store.state.calendar.prev_record[i][0][0].day == day) {
                         return true;
                     }
                 }
@@ -215,7 +215,7 @@ export default {
             }
             else if(index == 1) {
                 for(let i=0; i<this.$store.state.calendar.current_record.length; i++) {
-                    if(this.$store.state.calendar.current_record[i][0][0].day == day) {
+                    if(this.$store.state.calendar.current_record[i][0].length != 0 && this.$store.state.calendar.current_record[i][0][0].day == day) {
                         return true;
                     }
                 }
@@ -223,7 +223,7 @@ export default {
             }
             else if(index == 2) {
                 for(let i=0; i<this.$store.state.calendar.next_record.length; i++) {
-                    if(this.$store.state.calendar.next_record[i][0][0].day == day) {
+                    if(this.$store.state.calendar.next_record[i][0].length != 0 && this.$store.state.calendar.next_record[i][0][0].day == day) {
                         return true;
                     }
                 }
