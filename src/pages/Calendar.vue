@@ -60,7 +60,7 @@
             </Flicking>
         </div>
         <q-dialog v-model="icon">
-            <div ref="targetElement" class="modal_card">
+            <div class="modal_card">
                 <q-card style="height: 100%;">
                     <q-card-section class="row items-center q-pb-md">
                         <q-btn icon="close" flat round dense v-close-popup />
@@ -72,20 +72,25 @@
                         <q-btn @click="shot()" flat round dense :icon="outlinedShare" />
                     </q-card-section>
                     <q-card-section class="recordlist">
-                        <div v-for="(row, index) in $store.state.calendar.current_record" :key="index">
-                            <div v-if="row[0][0].day == clickedDay">
-                                <div v-for="(group, index2) in row[clickedIndex]" :key="index2">
-                                    <div>{{ group.title }}</div>
-                                    <div>최고 무게 : {{ get_max_kg(group.record) }}KG</div>
-                                    <div>예상 1RM : {{ onerm(group.record) }}KG</div>
-                                    <div class="row justify-start">
-                                        <div v-for="(record, index3) in group.record" :key="index3">
-                                            <div class="q-pa-xs column items-center">
-                                                <q-avatar size="lg" color="red" text-color="white">{{ record.kg }}
-                                                </q-avatar>
-                                                <text-body1 text-color="white">
-                                                    {{ record.rep }}회
-                                                </text-body1>
+                        <div ref="targetElement">
+                            <div v-for="(row, index) in $store.state.calendar.current_record" :key="index">
+                                <div v-if="row[0][0].day == clickedDay">
+                                    <div v-for="(group, index2) in row[clickedIndex]" :key="index2">
+                                        <div>{{ group.title }}</div>
+                                        <div>최고 무게 : {{ get_max_kg(group.record) }}KG</div>
+                                        <div>예상 1RM : {{ onerm(group.record) }}KG</div>
+                                        <div class="row justify-start">
+                                            <div v-for="(record, index3) in group.record" :key="index3">
+                                                <div class="q-pa-xs column items-center">
+                                                    <q-avatar size="lg" color="red" text-color="white">{{ record.kg }}
+                                                    </q-avatar>
+                                                    <text-body1 text-color="white">
+                                                        {{ record.rep }}회
+                                                    </text-body1>
+                                                    <text-body1 text-color="white">
+                                                        {{ Math.floor(record.performance_time/60) }}:{{ record.performance_time%60}}
+                                                    </text-body1>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
