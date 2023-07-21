@@ -71,7 +71,9 @@
             <q-icon v-else name="none" />
           </div>
         </div>
-        <div class="col flex flex-center ">{{ min(a.performance_time) }}:{{ sec(a.performance_time) }}
+        <div v-if="a.performance_time < 0" class="col flex flex-center ">No Rest
+        </div>
+        <div v-else class="col flex flex-center ">{{ min(a.performance_time) }}:{{ sec(a.performance_time) }}
         </div>
       </div>
     </div>

@@ -78,7 +78,6 @@ export default {
       });
     },
     loadscript() {
-      console.log(process.env.VUE_APP_KAKAO_JAVASCRIPT_KEY)
       const script = document.createElement("script");
       script.src =
         "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=" +

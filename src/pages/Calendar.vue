@@ -31,7 +31,7 @@
                             <tr v-for="(row, index) in item.CalendarMatrix" :key="index">
                                 <td v-for="(day, index2) in row" :key="index2">
                                     <div v-if="day !== ''">
-                                        <q-btn @click="openRecord(day)" flat round dense style="width: 50px; height: 50px;">
+                                        <q-btn @click="openRecord(day)" flat round dense >
                                             <div v-if="day !== ''">
                                                 <div v-if="record_exist(day, calendar_data.indexOf(item))">
                                                     <div class="column items-center" style="margin-top: 5px;">
