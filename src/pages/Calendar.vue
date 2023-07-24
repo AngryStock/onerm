@@ -90,6 +90,9 @@
                                                     <text-body1 text-color="white">
                                                         {{ Math.floor(record.performance_time/60) }}:{{ record.performance_time%60}}
                                                     </text-body1>
+                                                    <text-body1 v-if="record.performance_time < 0" text-color="white" style="font-size: 10px;">
+                                                        No Rest
+                                                    </text-body1>
                                                 </div>
                                             </div>
                                         </div>

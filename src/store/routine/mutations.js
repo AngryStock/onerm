@@ -29,7 +29,7 @@ export const addDivision = (state, payload) => {
 
 export const addMyList = (state, payload) => {
   // console.log(payload.record[0],payload.memo[0])
-  Object.assign(state.mylist,payload.mylist)
+  state.mylist.push(...payload.mylist)
   if(payload.record[0]){
     state.record.push(...payload.record)
     state.exrecord.push(...payload.exrecord)
