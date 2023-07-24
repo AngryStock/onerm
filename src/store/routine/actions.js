@@ -29,11 +29,12 @@ export function deleteMyList(context, payload) {
   api
     .delete("/del_mylist", {
       params: {
-        _id: payload._id,
+        _id: payload,
       },
     })
     .then(() => {
-      context.commit("deleteMyList", payload.num);
+      console.log(payload)
+      context.commit("deleteMyList", payload);
     });
 }
 

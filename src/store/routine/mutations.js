@@ -16,7 +16,8 @@ export const deleteDivision = (state, payload) => {
   state.division.splice(payload, 1);
 };
 export const deleteMyList = (state, payload) => {
-  state.mylist.splice(payload, 1);
+  var rmTarget = state.mylist.findIndex((e)=>e._id == payload)
+  state.mylist.splice(rmTarget, 1);
 };
 
 export const addRoutine = (state, payload) => {

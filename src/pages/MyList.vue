@@ -23,10 +23,9 @@
           <q-btn-group rounded class="full-width q-mb-md item_target text_target" style="height: 50px">
             <q-btn @click="startWorkout(i)" class="full-width text-bold"
               :label="a.title" style="font-size: 16px" />
-            <q-btn class="q-pr-md" dense icon="delete" size="md" @click="$store.dispatch('routine/deleteMyList', {
-              _id: a._id,
-              num: i
-            })" />
+            <q-btn class="q-pr-md" dense icon="delete" size="md" @click="$store.dispatch('routine/deleteMyList',
+              a._id,
+            )" />
           </q-btn-group>
         </div>
       </div>
