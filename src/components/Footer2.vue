@@ -42,7 +42,7 @@
       </q-card-section>
 
       <q-card-actions align="center" class="target">
-        <q-btn class="text-weight-bold text-red" flat label="취소" v-close-popup />
+        <q-btn class="text-weight-bold text-red" flat label="취소" @click="$router.go(-1)" v-close-popup />
         <q-btn class="text-weight-bold text-primary" flat label="수정" v-close-popup
           @click="$store.dispatch('routine/updateMemo', record_name)" />
       </q-card-actions>
