@@ -85,18 +85,10 @@ export const kg = (state, payload) => {
 
 export const addSet = (state,payload) =>{
   let targetRecord = state.record.find(a=>a.name == payload).record
-  let targetExrecord = state.exrecord.find(a=>a.name == payload).record
-  if(targetRecord.length == 0){
-    let copy1 = Object.assign({},targetExrecord[targetExrecord.length -1])
-    targetRecord.push(copy1)
-    targetRecord[0].check = false;
-    targetRecord[0].performance_time = '';
-  } else {
     var copy2 = Object.assign({}, targetRecord[targetRecord.length-1])
     targetRecord.push(copy2)
     targetRecord[targetRecord.length-1].check = false;
     targetRecord[targetRecord.length-1].performance_time = '';
-  }
   console.log(state.record.find(a=>a.name == payload).record)
 }
 

@@ -89,7 +89,7 @@
                   "></q-btn>
             </div>
             <div class="col">
-              <q-btn rounded dense class="full-width text-red" icon="fa-solid fa-minus" label="세트삭제"
+              <q-btn :disable="record.length == 1" rounded dense class="full-width text-red" icon="fa-solid fa-minus" label="세트삭제"
                 style="font-size: 16px;" @click="deleteSet(record_name)"></q-btn>
             </div>
           </div>
