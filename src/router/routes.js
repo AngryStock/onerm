@@ -36,6 +36,10 @@ const routes = [
 		path: "/",
 		component: () => import("pages/Loading.vue"),
 	},
+	{
+		path: "/manager",
+		component: () => import("pages/Manager.vue"),
+	},
 	// Always leave this as last one,
 	// but you can also remove it
 	{
