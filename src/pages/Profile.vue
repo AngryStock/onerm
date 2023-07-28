@@ -58,6 +58,7 @@ const darkmode = ref(LocalStorage.getItem("darkMode") || false);
 const index = [
   { icon: 'fa-solid fa-file', title: "서비스 이용약관", href: "/tos" },
   { icon: 'fa-solid fa-file', title: "개인정보처리방침", href: "/privacypolicy" },
+  { icon: 'fa-solid fa-file', title: "시설 등록 요청", href: "/submission" },
   { icon: 'fa-solid fa-right-from-bracket', title: "로그아웃", href: "/auth/logout" },
   { icon: 'fa-solid fa-user-slash', title: "회원탈퇴", href: "/auth/signout" },
 ];
