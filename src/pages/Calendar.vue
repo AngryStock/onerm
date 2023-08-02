@@ -62,36 +62,41 @@
         <q-dialog v-model="icon">
             <div class="modal_card">
                 <q-card style="height: 100%;">
-                    <q-card-section class="row items-center q-pb-md">
+                    <q-card-section class="row items-center justify-center">
                         <q-btn icon="close" flat round dense v-close-popup />
                         <q-space />
-                        <q-btn @click="onClickPrevRecord()" flat round dense label="<" size="lg"></q-btn>
-                        <div class="text-h6">{{ clickedYear }}년 {{ clickedMonth }}월 {{ clickedDay }}일</div>
-                        <q-btn @click="onClickNextRecord()" flat round dense label=">" size="lg"></q-btn>
+                        <div class="text-h6 q-px-lg">{{ clickedYear }}년 {{ clickedMonth }}월 {{ clickedDay }}일</div>
                         <q-space />
                         <q-btn @click="shot()" flat round dense :icon="outlinedShare" />
+                    </q-card-section>
+                    <q-card-section>
+                        <q-btn color="primary" label="">
+                            
+                        </q-btn>
                     </q-card-section>
                     <q-card-section class="recordlist">
                         <div ref="targetElement">
                             <div v-for="(row, index) in $store.state.calendar.current_record" :key="index">
                                 <div v-if="row[0][0].day == clickedDay">
-                                    <div v-for="(group, index2) in row[clickedIndex]" :key="index2">
-                                        <div>{{ group.title }}</div>
-                                        <div>최고 무게 : {{ get_max_kg(group.record) }}KG</div>
-                                        <div>예상 1RM : {{ onerm(group.record) }}KG</div>
+                                    <div class="text-left" v-for="(group, index2) in row[clickedIndex]" :key="index2">
+                                        <div class="q-py-sm">
+                                            <q-separator />
+                                        </div>
+                                        <div class="text-bold q-pl-xs">{{ group.title }}</div>
+                                        <div class="q-pl-xs">예상 1RM : {{ onerm(group.record) }}KG</div>
                                         <div class="row justify-start">
                                             <div v-for="(record, index3) in group.record" :key="index3">
                                                 <div class="q-pa-xs column items-center">
-                                                    <q-avatar size="lg" color="red" text-color="white">{{ record.kg }}
+                                                    <q-avatar size="lg" font-size="12px" color="red" text-color="white">{{ record.kg }}
                                                     </q-avatar>
                                                     <text-body1 text-color="white">
                                                         {{ record.rep }}회
                                                     </text-body1>
-                                                    <text-body1 text-color="white">
-                                                        {{ Math.floor(record.performance_time/60) }}:{{ record.performance_time%60}}
-                                                    </text-body1>
                                                     <text-body1 v-if="record.performance_time < 0" text-color="white" style="font-size: 10px;">
                                                         No Rest
+                                                    </text-body1>
+                                                    <text-body1 v-else text-color="white">
+                                                        {{ Math.floor(record.performance_time/60) }}:{{ record.performance_time%60}}
                                                     </text-body1>
                                                 </div>
                                             </div>
@@ -380,15 +385,6 @@ export default {
                 max_rep.push(set[i].rep);
             }
             return Math.floor(Math.max(...max_kg) * (1 + Math.max(...max_rep) / 30));
-        },
-        get_max_kg: function(set) {
-            var max_kg = -1;
-            for (var record of set) {
-                if (max_kg < record.kg) {
-                    max_kg = record.kg;
-                }
-            }
-            return max_kg;
         }
     }
 };
