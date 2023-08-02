@@ -3,6 +3,7 @@ import { createStore } from "vuex";
 import routine from "./routine";
 import profile from "./profile";
 import calendar from "./calendar";
+import manager from "./manager";
 
 // import example from './module-example'
 
@@ -17,7 +18,7 @@ import calendar from "./calendar";
 
 export default store(function (/* { ssrContext } */) {
   const Store = createStore({
-    modules: { routine, profile, calendar },
+    modules: { routine, profile, calendar, manager },
     // enable strict mode (adds overhead!)
     // for dev mode and --debug builds only
   });
