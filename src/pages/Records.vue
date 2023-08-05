@@ -13,7 +13,7 @@
         <Record :title="a.title" :exrecord="exrecord(a.list_id)" :record="record(a.list_id)" :record_name="a.list_id"
           @prev="$refs.flicking.prev()" @next="$refs.flicking.next()" :firstList="firstList(i)" :lastList="lastList(i, $store.state.routine.mylist.filter((a) => {
             return a.id == this.myList
-          }).length - 1)" :break_time="record(a.list_id)[record(a.list_id).length - 1].break_time" :myList="myList"
+          }).length - 1)" :break_time="record(a.list_id)[0].break_time" :myList="myList"
           :exdate="exdate(a.list_id)" />
         <Footer2 :record="record(a.list_id)" :record_name="a.list_id" :memo="memo(a.list_id)" @opener="opener()"
           :memoValue="memoValue" />

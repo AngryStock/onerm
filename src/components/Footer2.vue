@@ -93,7 +93,7 @@ export default {
     return {
       addPopup: false,
       memoPopup: false,
-      break_time: this.record[this.record.length - 1].break_time,
+      break_time: this.record[0].break_time,
     }
   },
   watch: {
