@@ -1,12 +1,3 @@
-# onerm (onerm)
+# 원알엠 (onerm) - 운동기록 웹 앱 입니다.
 
-onerm
-
-
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-npm run dev
-```
-
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+2023.08.05 휴식시간 미적용 문제 수정
