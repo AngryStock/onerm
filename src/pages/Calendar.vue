@@ -70,39 +70,44 @@
                         <q-btn @click="shot()" flat round dense :icon="outlinedShare" />
                     </q-card-section>
                     <q-card-section>
-                        <q-btn color="primary" label="">
-                            
-                        </q-btn>
-                    </q-card-section>
-                    <q-card-section class="recordlist">
-                        <div ref="targetElement">
-                            <div v-for="(row, index) in $store.state.calendar.current_record" :key="index">
-                                <div v-if="row[0][0].day == clickedDay">
-                                    <div class="text-left" v-for="(group, index2) in row[clickedIndex]" :key="index2">
-                                        <div class="q-py-sm">
-                                            <q-separator />
-                                        </div>
-                                        <div class="text-bold q-pl-xs">{{ group.title }}</div>
-                                        <div class="q-pl-xs">예상 1RM : {{ onerm(group.record) }}KG</div>
-                                        <div class="row justify-start">
-                                            <div v-for="(record, index3) in group.record" :key="index3">
-                                                <div class="q-pa-xs column items-center">
-                                                    <q-avatar size="lg" font-size="12px" color="red" text-color="white">{{ record.kg }}
-                                                    </q-avatar>
-                                                    <text-body1 text-color="white">
-                                                        {{ record.rep }}회
-                                                    </text-body1>
-                                                    <text-body1 v-if="record.performance_time < 0" text-color="white" style="font-size: 10px;">
-                                                        No Rest
-                                                    </text-body1>
-                                                    <text-body1 v-else text-color="white">
-                                                        {{ Math.floor(record.performance_time/60) }}:{{ record.performance_time%60}}
-                                                    </text-body1>
+                        <div v-for="(row, index) in $store.state.calendar.current_record" :key="index">
+                            <div v-if="row[0][0].day == clickedDay">
+                                <q-tabs v-model="tabs" dense class="text-grey" active-color="primary" indicator-color="primary" align="justify" narrow-indicator>
+                                    <q-tab v-for="(row2, index2) in row" :key="index2" :name="row2[0].date" :label="cal_time(row2[0].date)" />
+                                </q-tabs>
+                            </div>
+                        </div>
+                        <q-separator />
+                        <div v-for="(row, index) in $store.state.calendar.current_record" :key="index">
+                            <div v-if="row[0][0].day == clickedDay">
+                                <q-tab-panels v-model="tabs" animated>
+                                    <q-tab-panel class="text-left" v-for="(row2, index2) in row" :key="index2" :name="row2[0].date">
+                                        <div v-for="(group, index3) in row2" :key="index3">
+                                            <div class="q-py-sm">
+                                                <q-separator />
+                                            </div>
+                                            <div class="text-bold q-pl-xs">{{ group.title }}</div>
+                                            <div class="q-pl-xs">예상 1RM : {{ onerm(group.record) }}KG</div>
+                                            <div class="row justify-start">
+                                                <div v-for="(record, index4) in group.record" :key="index4">
+                                                    <div class="q-pa-xs column items-center">
+                                                        <q-avatar size="lg" font-size="12px" color="red" text-color="white">{{ record.kg }}
+                                                        </q-avatar>
+                                                        <text-body1 text-color="white">
+                                                            {{ record.rep }}회
+                                                        </text-body1>
+                                                        <text-body1 v-if="record.performance_time < 0" text-color="white" style="font-size: 10px;">
+                                                            No Rest
+                                                        </text-body1>
+                                                        <text-body1 v-else text-color="white">
+                                                            {{ Math.floor(record.performance_time/60) }}:{{ record.performance_time%60}}
+                                                        </text-body1>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    </q-tab-panel>
+                                </q-tab-panels>
                             </div>
                         </div>
                     </q-card-section>
@@ -117,12 +122,14 @@ import { outlinedShare } from '@quasar/extras/material-icons-outlined'
 import { ref } from 'vue'
 import html2canvas from 'html2canvas';
 import { Platform } from 'quasar';
+import { date } from 'quasar';
 export default {
     name: 'app_calendar',
     setup() {
         return {
             icon: ref(false),
-            outlinedShare
+            outlinedShare,
+            tabs: ref('123'),
         }
     },
     data() {
@@ -250,6 +257,9 @@ export default {
                     this.clickedDay = day;
                     this.clickedIndex = 0;
                     this.maxIndex = record.length;
+                    console.log(this.tabs);
+                    this.tabs = record[0][0].date;
+                    console.log(this.tabs);
                     return true;
                 }
             }
@@ -385,6 +395,9 @@ export default {
                 max_rep.push(set[i].rep);
             }
             return Math.floor(Math.max(...max_kg) * (1 + Math.max(...max_rep) / 30));
+        },
+        cal_time: function(time) {
+            return date.formatDate(time, 'HH:mm:ss');
         }
     }
 };
