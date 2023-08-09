@@ -61,7 +61,7 @@
         </div>
         <q-dialog v-model="icon">
             <div class="modal_card">
-                <q-card style="height: 100%;">
+                <q-card>
                     <q-card-section class="row items-center justify-center">
                         <q-btn icon="close" flat round dense v-close-popup />
                         <q-space />
@@ -77,7 +77,6 @@
                                 </q-tabs>
                             </div>
                         </div>
-                        <q-separator />
                         <div v-for="(row, index) in $store.state.calendar.current_record" :key="index">
                             <div v-if="row[0][0].day == clickedDay">
                                 <q-tab-panels v-model="tabs" animated>
@@ -91,12 +90,12 @@
                                             <div class="row justify-start">
                                                 <div v-for="(record, index4) in group.record" :key="index4">
                                                     <div class="q-pa-xs column items-center">
-                                                        <q-avatar size="lg" font-size="12px" color="red" text-color="white">{{ record.kg }}
+                                                        <q-avatar size="lg" :font-size="(22-2*int_length(record.kg))+'px'" color="red" text-color="white">{{ record.kg }}
                                                         </q-avatar>
                                                         <text-body1 text-color="white">
                                                             {{ record.rep }}회
                                                         </text-body1>
-                                                        <text-body1 v-if="record.performance_time < 0" text-color="white" style="font-size: 10px;">
+                                                        <text-body1 v-if="record.performance_time < 0" text-color="white" style="font-size: 10px; padding-top: 4px;">
                                                             No Rest
                                                         </text-body1>
                                                         <text-body1 v-else text-color="white">
@@ -398,6 +397,9 @@ export default {
         },
         cal_time: function(time) {
             return date.formatDate(time, 'HH:mm:ss');
+        },
+        int_length: function(a) {
+            return a.toString().length;
         }
     }
 };
